@@ -7,25 +7,25 @@ const testimonials = [
     name: "Arunima",
     image: "https://i.imgur.com/j1TqOTk.png",
     rating: 5,
-    text: "Tripti Ma’am is a divine soul with much knowledge and wisdom. She opened the door for me to enter the spiritual world with his teachings and messages. I've gained so much insight, especially after reviewing the course where I learned about the Chariot; the light codes, and light language. This has been an unbelievable adventure into who I am. With much gratitude, thank you, ma’am."
+    text: "maleeha is a divine soul with much knowledge and wisdom. She opened the door for me to enter the spiritual world with his teachings and messages. I've gained so much insight, especially after reviewing the course where I learned about the Chariot; the light codes, and light language. This has been an unbelievable adventure into who I am. With much gratitude, thank you, ma’am."
   },
   {
     name: "Soundarya",
     image: "https://i.imgur.com/NcQDCgH.png",
     rating: 5,
-    text: "What a beautiful course! I loved Tripti Tiwari readings from the beginning and thought I’ll sign up here for the training as her style and delivery was relatable and resonated with me. If you are looking to learn from a good friend, then look no further than Tripti Tiwari. Your success is written on the cards."
+    text: "What a beautiful course! I loved maleeha readings from the beginning and thought I’ll sign up here for the training as her style and delivery was relatable and resonated with me. If you are looking to learn from a good friend, then look no further than maleeha. Your success is written on the cards."
   },
   {
     name: "Arjun",
     image: "https://i.imgur.com/L9QlxwM.png",
     rating: 5,
-    text: "What a beautiful course! I loved Tripti Tiwari readings from the beginning and thought I’ll sign up here for the training as her style and delivery was relatable and resonated with me. If you are looking to learn from a good friend, then look no further than Tripti Tiwari. Your success is written on the cards."
+    text: "What a beautiful course! I loved maleeha readings from the beginning and thought I’ll sign up here for the training as her style and delivery was relatable and resonated with me. If you are looking to learn from a good friend, then look no further than maleeha. Your success is written on the cards."
   },
   {
     name: "Viraj",
     image: "https://i.imgur.com/tQvYIZB.png",
     rating: 5,
-    text: "Tripti Ma’am is a divine soul with much knowledge and wisdom. She opened the door for me to enter the spiritual world with his teachings and messages. I've gained so much insight especially after reviewing the course where I learned about the Chariot; the light codes and light language. This has been an unbelievable adventure into who I am. With much gratitude, thank you ma’am."
+    text: "maleeha is a divine soul with much knowledge and wisdom. She opened the door for me to enter the spiritual world with his teachings and messages. I've gained so much insight especially after reviewing the course where I learned about the Chariot; the light codes and light language. This has been an unbelievable adventure into who I am. With much gratitude, thank you ma’am."
   },
 ];
 
@@ -47,6 +47,9 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 30px;
+  @media screen(max-width: 435px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 `;
 
 const Card = styled(motion.div)`

@@ -104,7 +104,7 @@ const BookingSteps = () => {
     },
     {
       id: 4,
-      text: 'Thank you for booking a consultation with Celebrity Astrologer Tripti Tiwari. Our team will contact you shortly.',
+      text: 'Thank you for booking a consultation with Celebrity Astrologer Maleeha. Our team will contact you shortly.',
       icon: '/icons/check.png',
       animation: { y: -100, opacity: 0 },
     },

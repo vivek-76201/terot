@@ -82,13 +82,13 @@ const NewsMediaLinks = () => {
             Tech based Astro start-up <br />
             Divine talk onboards <br />
             Celebrity Astrologer <br />
-            Tripti Tiwari
+            Maleeha
           </h3>
         </TextSection>
         <ImageSection>
           <img
             src="/mnt/data/60909e8a-cffa-420f-928b-73ff338ed20d.png"
-            alt="Tripti Tiwari News"
+            alt="Maleeha News"
           />
         </ImageSection>
       </NewsContainer>

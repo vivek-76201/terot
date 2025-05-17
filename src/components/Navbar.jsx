@@ -131,8 +131,8 @@ const Navbar = () => {
         transition={{ type: 'spring', stiffness: 120 }}
       >
         <Logo href="/">
-          <span>Tripti</span>
-          <span>Tiwari</span>
+          <span>Maleeha</span>
+          <span>Maam</span>
         </Logo>
         <Menu>
           <MenuLink><a href="/" className="active">Home</a></MenuLink>

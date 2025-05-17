@@ -168,10 +168,10 @@ const Home1 = () => {
           Unlock the Mysteries of Your Destiny with
         </Eyebrow>
 
-        <Title variants={fadeFromLeft}>Tripti Tiwari</Title>
+        <Title variants={fadeFromLeft}>Maleeha</Title>
 
         <Para variants={fadeFromRight}>
-          Tripti Tiwari has a long and illustrious history in astrology and is
+          Maleeha has a long and illustrious history in astrology and is
           popular for her precise predictions and the most effective remedies.
           She is regarded as a gem in this unified platform’s treasure box; her
           specialties include Tarot Reading, psychics, rune reading, candle healing,
