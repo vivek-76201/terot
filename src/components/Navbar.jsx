@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import footerBg from './../assets/bg.jpg'; // same as Footer
 
 const Nav = styled(motion.header)`
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #00434e;
+  background: 
+    linear-gradient(rgba(0, 67, 78, 0.8), rgba(0, 67, 78, 0.8)),
+    url(${props => props.$bg});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   height: 72px;
   display: flex;
@@ -19,6 +26,10 @@ const Nav = styled(motion.header)`
     flex-direction: row;
     align-items: center;
   }
+
+  @media (max-width: 400px) {
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const Logo = styled.a`
@@ -27,7 +38,9 @@ const Logo = styled.a`
   font-weight: 700;
   color: #f4d48b;
   text-decoration: none;
-  span { display: block; }
+  span {
+    display: block;
+  }
 `;
 
 const Hamburger = styled.div`
@@ -95,7 +108,10 @@ const MenuLink = styled.li`
       bottom: -8px;
       left: 0;
     }
-    &:hover { color: #f4d48b; }
+
+    &:hover {
+      color: #f4d48b;
+    }
   }
 `;
 
@@ -118,10 +134,32 @@ const CTA = styled.a`
   &:hover {
     background: #f7e2a0;
   }
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+`;
+
+const GTA = styled.a`
+  background: #f4d48b;
+  color: #00434e;
+  padding: 0.3rem 1rem;
+  width: fit-content;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #f7e2a0;
+  }
 `;
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
 
   return (
     <>
@@ -129,15 +167,22 @@ const Navbar = () => {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120 }}
+        $bg={footerBg}
       >
         <Logo href="/">
           <span>Maleeha</span>
           <span>Maam</span>
         </Logo>
         <Menu>
-          <MenuLink><a href="/" className="active">Home</a></MenuLink>
-          <MenuLink><a href="/elearning">E‑Learning</a></MenuLink>
-          <MenuLink><a href="/about">About Me</a></MenuLink>
+          <MenuLink>
+            <a href="/" className={isActive('/') ? 'active' : ''}>Home</a>
+          </MenuLink>
+          <MenuLink>
+            <a href="/elearning" className={isActive('/elearning') ? 'active' : ''}>E‑Learning</a>
+          </MenuLink>
+          <MenuLink>
+            <a href="/about" className={isActive('/about') ? 'active' : ''}>About Me</a>
+          </MenuLink>
         </Menu>
         <Right>
           <CTA href="/consult">Consult Now</CTA>
@@ -157,10 +202,18 @@ const Navbar = () => {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <MenuLink><a href="/" onClick={() => setMenuOpen(false)}>Home</a></MenuLink>
-            <MenuLink><a href="/elearning" onClick={() => setMenuOpen(false)}>E‑Learning</a></MenuLink>
-            <MenuLink><a href="/about" onClick={() => setMenuOpen(false)}>About Me</a></MenuLink>
-            <CTA href="/consult" onClick={() => setMenuOpen(false)}>Consult Now</CTA>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <MenuLink>
+                <a href="/" onClick={() => setMenuOpen(false)} className={isActive('/') ? 'active' : ''}>Home</a>
+              </MenuLink>
+              <MenuLink>
+                <a href="/elearning" onClick={() => setMenuOpen(false)} className={isActive('/elearning') ? 'active' : ''}>E‑Learning</a>
+              </MenuLink>
+              <MenuLink>
+                <a href="/about" onClick={() => setMenuOpen(false)} className={isActive('/about') ? 'active' : ''}>About Me</a>
+              </MenuLink>
+              <GTA href="/consult" onClick={() => setMenuOpen(false)}>Consult Now</GTA>
+            </ul>
           </Sidebar>
         )}
       </AnimatePresence>

@@ -42,15 +42,16 @@ const Title = styled(motion.h2)`
   color: #003333;
   margin-bottom: 40px;
 `;
-
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 30px;
-  @media screen(max-width: 435px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  @media screen and (max-width: 435px) {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 `;
+
 
 const Card = styled(motion.div)`
   background-color: #004d4d;

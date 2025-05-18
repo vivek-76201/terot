@@ -1,113 +1,162 @@
-import React from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
+import { motion, useInView } from 'framer-motion';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import footerBg from './../assets/bg.jpg'; // Adjust the path based on your structure
 
-const testimonials = [
-  {
-    name: "Arunima",
-    image: "https://i.imgur.com/j1TqOTk.png",
-    rating: 5,
-    text: "maleeha is a divine soul with much knowledge and wisdom. She opened the door for me to enter the spiritual world with his teachings and messages. I've gained so much insight, especially after reviewing the course where I learned about the Chariot; the light codes, and light language. This has been an unbelievable adventure into who I am. With much gratitude, thank you, ma’am."
-  },
-  {
-    name: "Soundarya",
-    image: "https://i.imgur.com/NcQDCgH.png",
-    rating: 5,
-    text: "What a beautiful course! I loved Maleeha readings from the beginning and thought I’ll sign up here for the training as her style and delivery was relatable and resonated with me. If you are looking to learn from a good friend, then look no further than Maleeha. Your success is written on the cards."
-  },
-  {
-    name: "Arjun",
-    image: "https://i.imgur.com/L9QlxwM.png",
-    rating: 5,
-    text: "What a beautiful course! I loved Maleeha readings from the beginning and thought I’ll sign up here for the training as her style and delivery was relatable and resonated with me. If you are looking to learn from a good friend, then look no further than Maleeha. Your success is written on the cards."
-  },
-  {
-    name: "Viraj",
-    image: "https://i.imgur.com/tQvYIZB.png",
-    rating: 5,
-    text: "maleeha is a divine soul with much knowledge and wisdom. She opened the door for me to enter the spiritual world with his teachings and messages. I've gained so much insight especially after reviewing the course where I learned about the Chariot; the light codes and light language. This has been an unbelievable adventure into who I am. With much gratitude, thank you ma’am."
-  },
-];
+const FooterContainer = styled.footer`
+  background: 
+    linear-gradient(rgba(52, 115, 119, 0.6), rgba(52, 115, 119, 0.6)),
+    url(${props => props.$bg});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  border-radius: 15px;
 
-const Section = styled.section`
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+  }
 `;
 
-const Title = styled(motion.h2)`
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #003333;
-  margin-bottom: 40px;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-`;
-
-const Card = styled(motion.div)`
-  background-color: #004d4d;
-  color: white;
-  padding: 30px;
-  border-radius: 20px;
+const Section = styled(motion.div)`
+  flex: 1;
+  min-width: 220px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
-const Avatar = styled.img`
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
+const Logo = styled.h2`
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #f4d48b;
+  line-height: 1.2;
 `;
 
-const Name = styled.h3`
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.1rem;
-`;
-
-const Stars = styled.div`
-  color: #f6c475;
-`;
-
-const Text = styled.p`
+const SubText = styled.p`
   font-size: 0.95rem;
-  line-height: 1.5;
 `;
 
-export default function Testimonials() {
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+const ListItem = styled.li`
+  margin-bottom: 0.5rem;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+
+    &:hover {
+      color: #f4d48b;
+    }
+  }
+`;
+
+const ContactLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  &:hover {
+    color: #f4d48b;
+  }
+`;
+
+const Icons = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  a {
+    background: #f4d48b;
+    color: #00434e;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #f7e2a0;
+    }
+  }
+`;
+
+const Footer = () => {
+  const ref = useRef();
+  const isInView = useInView(ref, { triggerOnce: false, margin: '-50px' });
+
   return (
-    <Section>
-      <Title
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
+    <FooterContainer ref={ref} $bg={footerBg}>
+      <Section
+        initial={{ opacity: 0, x: -50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+        transition={{ duration: 0.6 }}
       >
-        Testimonials
-      </Title>
-      <Grid>
-        {testimonials.map((t, i) => (
-          <Card
-            key={i}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
-            viewport={{ once: false }}
-          >
-            <Avatar src={t.image} alt={t.name} />
-            <Name>{t.name}</Name>
-            <Stars>{"★".repeat(t.rating)}</Stars>
-            <Text>{t.text}</Text>
-          </Card>
-        ))}
-      </Grid>
-    </Section>
+        <Logo>
+          Maleeha<br />Maam
+        </Logo>
+        <SubText>Psychic Tarot Reader | Runes Reader |</SubText>
+        <SubText>Candle Magic & Healing</SubText>
+      </Section>
+
+      <Section
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <h3>Browse</h3>
+        <List>
+          <ListItem><a href="/">Home</a></ListItem>
+          <ListItem><a href="/elearning">E-Learning</a></ListItem>
+          <ListItem><a href="/about">About Me</a></ListItem>
+        </List>
+      </Section>
+
+      <Section
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <h3>Contact</h3>
+        <ContactLink href="mailto:info@tarotripti.com">info@tarotripti.com</ContactLink>
+        <ContactLink href="tel:+918815354168">+91-8815354168</ContactLink>
+      </Section>
+
+      <Section
+        initial={{ opacity: 0, x: 50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
+        <h3>Social Media Handles</h3>
+        <Icons>
+          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+            <FaFacebookF />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <FaInstagram />
+          </a>
+        </Icons>
+      </Section>
+    </FooterContainer>
   );
-}
+};
+
+export default Footer;

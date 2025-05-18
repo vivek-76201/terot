@@ -15,7 +15,7 @@ const Home = () => {
       <BookingSteps></BookingSteps>
       <Testimonials/>
       <Media/>
-     
+     <Footer1/>
     </div>
   )
 }
